@@ -3,4 +3,4 @@ select
     user_id as customer_id,
     order_date,
     status
-from {{ source('shop', 'orders')}}
+from {{ source('shop', 'orders') }}
