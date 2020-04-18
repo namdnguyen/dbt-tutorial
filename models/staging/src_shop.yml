@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: shop
+    database: dbt-tutorial
+    schema: jaffle_shop
+    tables:
+      - name: customers
+      - name: orders
+      - name: payments
