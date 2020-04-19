@@ -3,6 +3,9 @@ version: 2
 models:
   - name: dim_customers
     description: One record per customer
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('stg_customers')
     columns:
       - name: customer_id
         description: Primary key
@@ -13,6 +16,9 @@ models:
         description: NULL when a customer has not yet placed an order.
   - name: fct_orders
     description: One record per order
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('stg_orders')
     columns:
       - name: order_id
         description: Primary key
