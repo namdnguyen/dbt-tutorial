@@ -11,16 +11,21 @@ WITH
   payments AS (
     SELECT * FROM {{ ref('stg_payments') }}
   ),
+  amount_totals AS (
+    SELECT order_id,
+           SUM(amount) AS order_amount
+      FROM payments
+     GROUP BY 1
+    ),
   final AS (
     SELECT orders.order_id,
            customer_id,
-           payment_id,
-           amount,
+           order_amount,
            order_date,
            status
       FROM orders
-             LEFT JOIN payments
-                 ON orders.order_id = payments.order_id
+             LEFT JOIN amount_totals
+                 ON orders.order_id = amount_totals.order_id
   )
 
 SELECT * FROM final

@@ -11,10 +11,10 @@ models:
           - not_null
       - name: first_order_date
         description: NULL when a customer has not yet placed an order.
-  - name: fct_order_payments
-    description: One record per payment
+  - name: fct_orders
+    description: One record per order
     columns:
-      - name: payment_id
+      - name: order_id
         description: Primary key
         tests:
           - unique
