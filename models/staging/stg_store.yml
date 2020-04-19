@@ -29,3 +29,8 @@ models:
         tests:
           - unique
           - not_null
+      - name: payment_method
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['bank_transfer', 'coupon', 'credit_card', 'gift_card']
