@@ -36,4 +36,6 @@ WITH
                  ON orders.order_id = amount_totals.order_id
   )
 
-SELECT * FROM final
+SELECT *
+  FROM final
+ ORDER BY order_id

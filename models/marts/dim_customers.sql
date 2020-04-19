@@ -31,4 +31,6 @@ WITH
                  ON customers.customer_id = customer_orders.customer_id
 )
 
-SELECT * FROM final
+SELECT *
+  FROM final
+ ORDER BY customer_id
