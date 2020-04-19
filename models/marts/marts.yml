@@ -19,6 +19,8 @@ models:
     tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref('stg_orders')
+      - dbt_utils.expression_is_true:
+          expression: "bank_transfer_amount + coupon_amount + credit_card_amount + gift_card_amount = total_amount"
     columns:
       - name: order_id
         description: Primary key

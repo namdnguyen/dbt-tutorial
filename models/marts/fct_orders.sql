@@ -18,8 +18,8 @@ WITH
   ),
   amount_totals AS (
     SELECT order_id,
-           {%- for payment_method in payment_methods -%}
-           SUM(CASE WHEN payment_method = '{{payment_method}}' THEN amount END) AS {{payment_method}}_amount,
+           {% for payment_method in payment_methods -%}
+           COALESCE(SUM(CASE WHEN payment_method = '{{payment_method}}' THEN amount END), 0) AS {{payment_method}}_amount,
            {% endfor -%}
            SUM(amount) AS total_amount
       FROM payments
@@ -30,7 +30,7 @@ WITH
            customer_id,
            order_date,
            status,
-           {%- for payment_method in payment_methods -%}
+           {% for payment_method in payment_methods -%}
            {{payment_method}}_amount,
            {% endfor -%}
            total_amount
