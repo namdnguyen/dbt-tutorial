@@ -6,7 +6,7 @@ name: 'jaffle_shop'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'default'
+profile: 'jaffle_shop'
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -32,4 +32,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   jaffle_shop:
-      materialized: view
+    marts:
+      materialized: table

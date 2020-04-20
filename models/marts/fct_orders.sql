@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='table'
-  )
-}}
-
 {%- set payment_methods = dbt_utils.get_column_values(
     table=ref('stg_payments'),
     column='payment_method'
